@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Umi4ENA6Ks9h7sQZ/kE7NVYRXutjM4SXxlh5/SKnksF0udijakmN8eLBdRULOgwNCfY3Y0KnjskyHWM7u/fqVQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\arosenius.carlander\\Documents\\Vinterprojekt_Carl-Anders_TE20A\\Vinterprojekt\\Vinterprojekt\\Vinterprojekt.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\arosenius.carlander\\.nuget\\packages\\raylib-cs\\3.7.0.1\\raylib-cs.3.7.0.1.nupkg.sha512",
+    "C:\\Users\\arosenius.carlander\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
