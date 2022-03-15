@@ -1,6 +1,8 @@
 ﻿using System;
 using Raylib_cs;
-
+Everything();
+static void Everything()
+{
 Raylib.InitWindow(800, 600, "Happy stone game");
 Raylib.SetTargetFPS(60);
 
@@ -260,4 +262,5 @@ while (Raylib.WindowShouldClose() == false)
 
     Raylib.EndDrawing();
 
+}
 }
