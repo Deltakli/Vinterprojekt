@@ -1,0 +1,10 @@
+C:\Users\arosenius.carlander\Documents\Vinterprojekt_Carl-Anders_TE20A\Vinterprojekt\Vinterprojekt\bin\Release\net5.0\publish\Vinterprojekt.exe
+C:\Users\arosenius.carlander\Documents\Vinterprojekt_Carl-Anders_TE20A\Vinterprojekt\Vinterprojekt\bin\Release\net5.0\publish\Vinterprojekt.dll
+C:\Users\arosenius.carlander\Documents\Vinterprojekt_Carl-Anders_TE20A\Vinterprojekt\Vinterprojekt\bin\Release\net5.0\publish\Vinterprojekt.deps.json
+C:\Users\arosenius.carlander\Documents\Vinterprojekt_Carl-Anders_TE20A\Vinterprojekt\Vinterprojekt\bin\Release\net5.0\publish\Vinterprojekt.runtimeconfig.json
+C:\Users\arosenius.carlander\Documents\Vinterprojekt_Carl-Anders_TE20A\Vinterprojekt\Vinterprojekt\bin\Release\net5.0\publish\Vinterprojekt.pdb
+C:\Users\arosenius.carlander\Documents\Vinterprojekt_Carl-Anders_TE20A\Vinterprojekt\Vinterprojekt\bin\Release\net5.0\publish\Raylib-cs.dll
+C:\Users\arosenius.carlander\Documents\Vinterprojekt_Carl-Anders_TE20A\Vinterprojekt\Vinterprojekt\bin\Release\net5.0\publish\runtimes\linux-x64\native\libraylib.so
+C:\Users\arosenius.carlander\Documents\Vinterprojekt_Carl-Anders_TE20A\Vinterprojekt\Vinterprojekt\bin\Release\net5.0\publish\runtimes\osx-x64\native\libraylib.dylib
+C:\Users\arosenius.carlander\Documents\Vinterprojekt_Carl-Anders_TE20A\Vinterprojekt\Vinterprojekt\bin\Release\net5.0\publish\runtimes\win-x64\native\raylib.dll
+C:\Users\arosenius.carlander\Documents\Vinterprojekt_Carl-Anders_TE20A\Vinterprojekt\Vinterprojekt\bin\Release\net5.0\publish\runtimes\win-x86\native\raylib.dll
