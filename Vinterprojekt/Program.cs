@@ -24,6 +24,8 @@ static void Everything()
     int Keyall = 0;
     Font f1 = Raylib.LoadFont(@"Metrophobic.ttf");
 
+    int timer = 0;
+
     Texture2D playerImage = Raylib.LoadTexture("piskel.png");
     Texture2D DoorImage = Raylib.LoadTexture("Door.png");
 
@@ -71,7 +73,7 @@ static void Everything()
     //karektärens rörelsen
     while (Raylib.WindowShouldClose() == false)
     {
-        Console.WriteLine(room);
+        // Console.WriteLine(room);
         float xMovement = 0;
         float yMovement = 0;
         if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
@@ -89,6 +91,22 @@ static void Everything()
         if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
         {
             xMovement = -5;
+        }
+
+        if (timer > 0)
+        {
+            timer--;
+        }
+
+        int t = Raylib.GetKeyPressed();
+        
+        if (t != 0 && t != (int)KeyboardKey.KEY_D 
+                && t != (int)KeyboardKey.KEY_A
+                && t != (int)KeyboardKey.KEY_S
+                && t != (int)KeyboardKey.KEY_W)
+        {
+            timer = 60;
+            Console.WriteLine(t);
         }
 
         playerRect.x += xMovement;
@@ -111,24 +129,23 @@ static void Everything()
         }
 
 
-
-
         //Här börjar ritningen av karektären
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.BROWN);
         Raylib.DrawTexture(playerImage, (int)playerRect.x, (int)playerRect.y, Color.WHITE);
 
-
         //Här börjar ritningen av rum 1
         if (room == "room1")
         {
+            //for each loppar 
 
-            Raylib.DrawRectangleRec(wallRect, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect2, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect3, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect4, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect5, Color.GRAY);
-            Raylib.DrawText($"{Keyall}", 20, 15, 40, Color.BLACK);
+            for (int i = 0; i < room1walls.Count; i++)
+            {
+                Raylib.DrawRectangleRec(room1walls[i], Color.GRAY);
+            }
+            Raylib.DrawText("How you move is by pressing W for Up, A for Left, D for Right and S for down", 25, 5, 19, Color.BLACK);
+            Raylib.DrawText("Your objective is to collect all 5 Keys to Escape this house", 25, 30, 19, Color.BLACK);
+            Raylib.DrawText($"{Keyall}", 20, 65, 40, Color.BLACK);
             Rectangle overlap = Raylib.GetCollisionRec(playerRect, Roomport);
             Raylib.DrawRectangleRec(Roomport, Color.BLUE);
             Raylib.DrawRectangleRec(Roomport3, Color.BLUE);
@@ -137,13 +154,10 @@ static void Everything()
         //Här börjar ritningen av rum 2
         else if (room == "room2")
         {
-            Raylib.DrawRectangleRec(wallRect, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect8, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect9, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect3, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect4, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect5, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect6, Color.GRAY);
+            for (int i = 0; i < room2walls.Count; i++)
+            {
+                Raylib.DrawRectangleRec(room2walls[i], Color.GRAY);
+            }
             Rectangle overlap = Raylib.GetCollisionRec(playerRect, Roomport2);
             Raylib.DrawRectangleRec(Roomport2, Color.BLUE);
             Raylib.DrawRectangleRec(overlap, Color.BROWN);
@@ -154,16 +168,20 @@ static void Everything()
                 Raylib.DrawRectangleRec(Key1, Color.GREEN);
             }
 
+        if (timer > 0)
+        {
+           Raylib.DrawText("you are pressing the wrong KEYS!", (int)playerRect.x - 80, (int)playerRect.y - 20, 19, Color.BLACK);
+        }
+
         }
 
         //Här börjar ritningen av rum 3
         else if (room == "room3")
         {
-            Raylib.DrawRectangleRec(wallRect, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect2, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect7, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect5, Color.GRAY);
-            Raylib.DrawRectangleRec(wallRect6, Color.GRAY);
+            for (int i = 0; i < room3walls.Count; i++)
+            {
+                Raylib.DrawRectangleRec(room3walls[i], Color.GRAY);
+            }
             Rectangle overlap = Raylib.GetCollisionRec(playerRect, Roomport4);
             Raylib.DrawRectangleRec(Roomport4, Color.BLUE);
             Raylib.DrawRectangleRec(overlap, Color.BROWN);
