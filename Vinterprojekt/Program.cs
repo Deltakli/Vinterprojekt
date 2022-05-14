@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Raylib_cs;
+
 Everything();
 static void Everything()
 {
@@ -28,89 +29,54 @@ static void Everything()
 
     Texture2D playerImage = Raylib.LoadTexture("piskel.png");
     Texture2D DoorImage = Raylib.LoadTexture("Door.png");
-
+     
     //Alla vägar som finns
-    Rectangle wallRect = new Rectangle(0, 0, 50, 200);
-    Rectangle wallRect2 = new Rectangle(0, 0, 800, 60);
-    Rectangle wallRect3 = new Rectangle(750, 0, 50, 200);
-    Rectangle wallRect4 = new Rectangle(750, 400, 50, 200);
-    Rectangle wallRect5 = new Rectangle(0, 400, 50, 200);
-    Rectangle wallRect6 = new Rectangle(0, 550, 800, 60);
-    Rectangle wallRect7 = new Rectangle(750, 0, 50, 600);
-    Rectangle wallRect8 = new Rectangle(0, 0, 270, 60);
-    Rectangle wallRect9 = new Rectangle(530, 0, 220, 60);
-
+    Rectangle[] wallRect = new Rectangle[10];
+    wallRect[0] = new Rectangle(0, 0, 50, 200);
+    wallRect[1] = new Rectangle(0, 0, 800, 60);
+    wallRect[2] = new Rectangle(750, 0, 50, 200);
+    wallRect[3] = new Rectangle(750, 400, 50, 200);
+    wallRect[4] = new Rectangle(0, 400, 50, 200);
+    wallRect[5] = new Rectangle(0, 550, 800, 60);
+    wallRect[6] = new Rectangle(750, 0, 50, 600);
+    wallRect[7] = new Rectangle(0, 0, 270, 60);
+    wallRect[8] = new Rectangle(530, 0, 220, 60);
 
     //Lista på alla vägar som är i rum 1
     List<Rectangle> room1walls = new List<Rectangle>();
-    room1walls.Add(wallRect);
-    room1walls.Add(wallRect2);
-    room1walls.Add(wallRect3);
-    room1walls.Add(wallRect4);
-    room1walls.Add(wallRect5);
-
+    for(int i = 0; i < 5; i++){
+        room1walls.Add(wallRect[i]);
+    }
     //Lista på alla vägar som är i rum 2
     List<Rectangle> room2walls = new List<Rectangle>();
-    room2walls.Add(wallRect);
-    room2walls.Add(wallRect8);
-    room2walls.Add(wallRect9);
-    room2walls.Add(wallRect3);
-    room2walls.Add(wallRect4);
-    room2walls.Add(wallRect5);
-    room2walls.Add(wallRect6);
+    for(int i = 0; i < 9; i++){
+        if(i == 1 || i == 6){
 
+        } else {
+            room2walls.Add(wallRect[i]);
+        }
+    }
     //Lista på alla vägar som är i rum 3
     List<Rectangle> room3walls = new List<Rectangle>();
-    room3walls.Add(wallRect);
-    room3walls.Add(wallRect2);
-    room3walls.Add(wallRect7);
-    room3walls.Add(wallRect3);
-    room3walls.Add(wallRect5);
-    room3walls.Add(wallRect6);
+    for(int i = 0; i < 9; i++){
+        if(i == 3|| i == 7 || i == 8){
 
+        } else {
+            room3walls.Add(wallRect[i]);
+        }
+    }
     string room = "room1";
 
     //karektärens rörelsen
     while (Raylib.WindowShouldClose() == false)
     {
-        // Console.WriteLine(room);
+
         float xMovement = 0;
         float yMovement = 0;
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_D))
-        {
-            xMovement = 5;
-        }
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_S))
-        {
-            yMovement = 5;
-        }
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_W))
-        {
-            yMovement = -5;
-        }
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_A))
-        {
-            xMovement = -5;
-        }
 
-        if (timer > 0)
-        {
-            timer--;
-        }
-
-        int t = Raylib.GetKeyPressed();
-        
-        if (t != 0 && t != (int)KeyboardKey.KEY_D 
-                && t != (int)KeyboardKey.KEY_A
-                && t != (int)KeyboardKey.KEY_S
-                && t != (int)KeyboardKey.KEY_W)
-        {
-            timer = 60;
-            Console.WriteLine(t);
-        }
-
-        playerRect.x += xMovement;
-        playerRect.y += yMovement;
+        (timer, xMovement, playerRect) = Timer.TimeOne(timer, xMovement, playerRect);
+        (timer, yMovement, playerRect) = TimerTwo.TimeTwo(timer, yMovement, playerRect);
+        timer = Dock.ClockT(Dock.t, timer);
 
         //Alla rum som finns och vad de har i sig i listor
         if (room == "room1")
@@ -125,9 +91,7 @@ static void Everything()
         if (room == "room3")
         {
             (playerRect, room, key2PickedUp, Keyall) = Rooms.RoomThree(playerRect, xMovement, yMovement, key2PickedUp, Key2, Keyall, room, room3walls, Roomport4);
-
         }
-
 
         //Här börjar ritningen av karektären
         Raylib.BeginDrawing();
@@ -167,12 +131,6 @@ static void Everything()
             {
                 Raylib.DrawRectangleRec(Key1, Color.GREEN);
             }
-
-        if (timer > 0)
-        {
-           Raylib.DrawText("you are pressing the wrong KEYS!", (int)playerRect.x - 80, (int)playerRect.y - 20, 19, Color.BLACK);
-        }
-
         }
 
         //Här börjar ritningen av rum 3
@@ -191,9 +149,12 @@ static void Everything()
             if (key2PickedUp == false)
             {
                 Raylib.DrawRectangleRec(Key2, Color.GREEN);
-            }
-
+            }         
         }
+            if (timer > 0)
+          {
+            Raylib.DrawText("you are pressing the wrong KEYS!", (int)playerRect.x - 80, (int)playerRect.y - 20, 19, Color.BLACK);
+          }
 
         Raylib.EndDrawing();
 
